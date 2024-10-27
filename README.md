@@ -11,7 +11,25 @@ A quick way to hide print statements during code runs. Perfect for debugging mac
 
 1. **Download the [`flowery/flower_code.py`](flowery/flower_code.py) file** and place it in your project directory.
 
-2. **Example 1: Debugging in PyTorch Models**
+2. **Basic Example:**
+```python
+from flower_code import flowery
+
+class Example:
+    @flowery(verbose=False)  # This hides print statements
+    def method(self):
+        print("This won't be shown.")
+
+    @flowery(verbose=True)  # This allows prints to run
+    def another_method(self):
+        print("This will be shown.")
+
+example = Example()
+example.method()
+example.another_method()
+```
+
+3. **ML Model Example:**
 ```python
 import torch
 import torch.nn as nn
@@ -39,7 +57,7 @@ output = model(input_tensor)
 print(f"Output: {output}")
 ```
 
-3. **Example 2: Debugging Complex Algorithms**
+4. **Debugging Complex Algorithms**
 ```python
 from flower_code import flowery
 
@@ -66,12 +84,6 @@ git clone https://github.com/your-username/flowery.git
 cd flowery
 ```
 
-## Testing
-
-You can run the tests with:
-```bash
-pytest tests/
-```
 
 ## License
 
